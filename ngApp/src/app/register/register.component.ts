@@ -25,7 +25,11 @@ export class RegisterComponent implements OnInit {
         }
         this.registerUserData = {};
       },
-      err=>console.log(err)
+      err=>{
+        if(err.statusCode === 400){
+          this.toastr.success('Registration Failed', 'Registration');
+        }
+      }
     )
 
   }

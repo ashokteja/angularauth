@@ -44,12 +44,11 @@ router.post('/register',(req,res)=>{
     user.save((error,registeredUser)=>{
       if(error){
         console.log(error)
+        res.send({statusCode :400,message:'error'})
       }else{
-
-
         //let payload = {subject:registeredUser._id};
         //let token   = jwt.sign(payload,'secretKey');
-        res.send({statusCode :200,message:'success'})
+        res.send({statusCode :200,message:'success'});
       }
     })
 
@@ -63,19 +62,20 @@ router.post('/login',(req,res)=>{
 
     User.findOne({email:userData.email},(error,user)=>{
       if(error){
-        console.log(error)
+        res.send({statusCode :401,message:'Email is not exists'})
       }
       else{
         if(!user){
-          res.status(401).send('Invalid Email')
+          res.send({statusCode :401,message:'Invalid Email'})
         }
         else if(user.password !== userData.password){
-          res.status(401).send('Invalid Password')
+          res.send({statusCode :401,message:'Invalid Password'})
         }
          else{
            let payload =  {subject:user._id};
            let token   = jwt.sign(payload,'secretKey');
-           res.status(200).send({token})
+           res.send({statusCode :200,token:token})
+
          }
       }
     })
