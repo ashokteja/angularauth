@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,8 @@ import {AuthService} from '../auth.service';
 export class RegisterComponent implements OnInit {
 
   registerUserData = {};
-  constructor(private _auth:AuthService) { }
+  constructor(private _auth:AuthService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -17,7 +19,12 @@ export class RegisterComponent implements OnInit {
   registerUser(){
     this._auth.registerUser(this.registerUserData)
     .subscribe(
-      res=>console.log(res),
+      res=> {
+        if(res.statusCode === 200){
+          this.toastr.success('Registration Successfully Completed', 'Registration');
+        }
+        this.registerUserData = {};
+      },
       err=>console.log(err)
     )
 
