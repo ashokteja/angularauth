@@ -18,6 +18,10 @@ import { EventService } from './event.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
+import { AddEventsComponent } from './add-events/add-events.component';
+import { AddSpecialEventsComponent } from './add-special-events/add-special-events.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     EventsComponent,
     SpecialEventsComponent,
     MydirectiveDirective,
+    AddEventsComponent,
+    AddSpecialEventsComponent,
     
   ],
   imports: [
@@ -35,7 +41,8 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot() 
+    ToastrModule.forRoot(),
+    CKEditorModule
 
     
     

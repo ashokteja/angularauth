@@ -1,0 +1,42 @@
+<div class="py-5">
+    <form  (ngSubmit)="f.form.valid && registerUser()" novalidate  #f="ngForm" >
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <span class="anchor" id="formLogin"></span>
+
+      <!-- form card login -->
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0" >Add Events</h3>
+        </div>
+        <div class="card-body">
+              <div class="form-group">
+                  <label for="name">Event Name</label>
+                  <input type="text" [(ngModel)]="specialEventsData.name" name="name" class="form-control rounded-0" required
+                  #name="ngModel" [ngClass]="{ 'is-invalid': (f.submitted && name.invalid)  }"  placeholder="Enter Name"
+                  >
+                </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+               <!-- <textarea name="eventDesc"  [(ngModel)]="specialEventsData.eventDesc" name="eventDesc" class="form-control rounded-0" required
+               #eventDesc="ngModel" [ngClass]="{ 'is-invalid': (f.submitted && eventDesc.invalid)  }"  placeholder="Enter Event Description"></textarea> -->
+               <ckeditor [editor]="Editor" ></ckeditor>
+
+            </div>
+            <div class="button-group"> 
+                <button type="submit"  name="submit"  class="btn btn-primary float-right ">Post</button>
+                <button type="button"  name="cancel"  class="btn btn-warning float-right  mr-2">Cancel</button>
+            </div>
+            
+        </div>
+        <!--/card-block-->
+      </div>
+   
+      <!-- /form card login -->
+
+    </div>
+
+
+  </div>
+</form>
+</div>
