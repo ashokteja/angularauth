@@ -5,6 +5,9 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+   
+    
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/events" routerLinkActive="active">Events</a>
@@ -12,7 +15,15 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/special" routerLinkActive="active">Members</a>
       </li>
+      
+      
     </ul>
+    <span  *ngIf="!_authService.loggedIn()" class="text-light">
+       Welcome Guest 
+     </span>
+     <span  *ngIf="_authService.loggedIn()" class="text-light">
+      Welcome {{_authService.getUserName() | firstLetterCap}}
+    </span>
       <ul class="navbar-nav">
         <a class="nav-link"  *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
         <a class="nav-link"  *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>

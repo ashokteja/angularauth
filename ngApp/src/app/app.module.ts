@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddEventsComponent } from './add-events/add-events.component';
 import { AddSpecialEventsComponent } from './add-special-events/add-special-events.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import {FirstLetterCap} from './pipes/firstLetterCap'
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MydirectiveDirective,
     AddEventsComponent,
     AddSpecialEventsComponent,
+    FirstLetterCap
     
   ],
   imports: [
@@ -42,7 +44,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    CKEditorModule
+    CKEditorModule,
+    
 
     
     

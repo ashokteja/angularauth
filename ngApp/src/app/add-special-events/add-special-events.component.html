@@ -1,5 +1,5 @@
 <div class="py-5">
-    <form  (ngSubmit)="f.form.valid && registerUser()" novalidate  #f="ngForm" >
+    <form  (ngSubmit)="f.form.valid && saveSpecialEvents()" novalidate  #f="ngForm" >
   <div class="row">
     <div class="col-md-10 mx-auto">
       <span class="anchor" id="formLogin"></span>
@@ -20,7 +20,7 @@
               <label for="description">Description</label>
                <!-- <textarea name="eventDesc"  [(ngModel)]="specialEventsData.eventDesc" name="eventDesc" class="form-control rounded-0" required
                #eventDesc="ngModel" [ngClass]="{ 'is-invalid': (f.submitted && eventDesc.invalid)  }"  placeholder="Enter Event Description"></textarea> -->
-               <ckeditor [editor]="Editor" ></ckeditor>
+               <ckeditor [editor]="Editor"  [ngModelOptions]="{standalone: true}" tagName="textarea" #description="ngModel"  [(ngModel)]="specialEventsData.description" ></ckeditor>
 
             </div>
             <div class="button-group"> 

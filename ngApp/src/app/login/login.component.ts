@@ -26,17 +26,16 @@ export class LoginComponent implements OnInit {
       this._auth.loginUser(this.loginUserData)
       .subscribe(
         res=> {
-          debugger
           if(res.statusCode == 200){
-            localStorage.setItem('token',res.token);
-            this._router.navigate(['/special'])
+          localStorage.setItem('currentUser',JSON.stringify(res.currentUser));
+          //localStorage.setItem('token',res.token);
+            this._router.navigate(['/special']);
           }
           else{
             this.toastr.error(res.message, 'Login');
           }
         },
         err=>{
-          debugger
           if(err.statusCode === 401){
             this.toastr.error(err.message, 'Login');
           }
